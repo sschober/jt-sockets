@@ -6,18 +6,16 @@
 package de.sssm.jt.raw.socket;
 
 /**
- *
+ * TODO: rename to JtIcmpSocket
  * @author Sven Schober <sschober@sssm.de>
  */
-public class JtRawSocket extends JtAbstractSocket{
+public class JtIcmpSocket extends JtAbstractSocket{
 
-    protected native void _sayHello();
     protected native int _open();
-    protected native void _close(int fd);    
     protected native JtDatagramPacket _recvfrom(int fd);
       
     public static void main(String[] args) throws SocketNotOpenException {
-        JtRawSocket jtRawSocket = new JtRawSocket();
+        JtIcmpSocket jtRawSocket = new JtIcmpSocket();
         
         jtRawSocket.sayHello();
         jtRawSocket.open();

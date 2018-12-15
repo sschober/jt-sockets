@@ -9,14 +9,6 @@ extern "C" {
 #endif
 /*
  * Class:     de_sssm_jt_raw_socket_JtDatagramSocket
- * Method:    _sayHello
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1sayHello
-  (JNIEnv *, jobject);
-
-/*
- * Class:     de_sssm_jt_raw_socket_JtDatagramSocket
  * Method:    _open
  * Signature: ()I
  */
@@ -25,19 +17,27 @@ JNIEXPORT jint JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1open
 
 /*
  * Class:     de_sssm_jt_raw_socket_JtDatagramSocket
- * Method:    _close
- * Signature: (I)V
- */
-JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1close
-  (JNIEnv *, jobject, jint);
-
-/*
- * Class:     de_sssm_jt_raw_socket_JtDatagramSocket
  * Method:    _recvfrom
  * Signature: (I)Lde/sssm/jt/raw/socket/JtDatagramPacket;
  */
 JNIEXPORT jobject JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1recvfrom
   (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     de_sssm_jt_raw_socket_JtDatagramSocket
+ * Method:    _sendto
+ * Signature: (ILjava/lang/String;I[B)V
+ */
+JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1sendto
+  (JNIEnv *, jobject, jint, jstring, jint, jbyteArray);
+
+/*
+ * Class:     de_sssm_jt_raw_socket_JtDatagramSocket
+ * Method:    _setTtl
+ * Signature: (II)V
+ */
+JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1setTtl
+  (JNIEnv *, jobject, jint, jint);
 
 #ifdef __cplusplus
 }

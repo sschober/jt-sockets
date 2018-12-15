@@ -7,26 +7,11 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-int Socket(int family, int type, int protocol){
-  int n;
+int Socket(int family, int type, int protocol);
 
-  if((n=socket(family,type,protocol))<0){
-    std::cerr << "socket error: " << strerror(errno) << std::endl;
-    exit(1);
-  }
+int Close(int fd);
 
-  return n;
-}
+ssize_t ReceiveFrom(int fd, void*, size_t, int, struct sockaddr *, socklen_t *);
 
-int Close(int fd){
-  int n;
-
-  if((n=close(fd))<0){
-    std::cerr << "socket error: " << strerror(errno) << std::endl;
-    exit(1);
-  }
-
-  return n;
-}
-
+ssize_t	SendTo(int, const void *, size_t, int, const struct sockaddr *, socklen_t);
 #endif // JT_SOCKET_HELPER_H

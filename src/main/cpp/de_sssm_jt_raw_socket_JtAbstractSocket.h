@@ -17,14 +17,6 @@ JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtAbstractSocket__1sayHello
 
 /*
  * Class:     de_sssm_jt_raw_socket_JtAbstractSocket
- * Method:    _open
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_de_sssm_jt_raw_socket_JtAbstractSocket__1open
-  (JNIEnv *, jobject);
-
-/*
- * Class:     de_sssm_jt_raw_socket_JtAbstractSocket
  * Method:    _close
  * Signature: (I)V
  */

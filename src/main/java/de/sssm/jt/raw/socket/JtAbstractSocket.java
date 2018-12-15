@@ -11,15 +11,16 @@ package de.sssm.jt.raw.socket;
  */
 public abstract class JtAbstractSocket {
     // file descriptor of native socket
-    private int fd = -1;
+    protected int fd = -1;
     
     static {
         System.loadLibrary("native");
     }
 
-    protected abstract void _sayHello();
+    private native void _sayHello();
+    private native void _close(int fd);    
+    
     protected abstract int _open();
-    protected abstract void _close(int fd);    
     protected abstract JtDatagramPacket _recvfrom(int fd);
     
     public void sayHello(){
