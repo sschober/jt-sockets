@@ -22,4 +22,17 @@ public class JtDatagramSocket extends JtAbstractSocket {
     public void setTtl(int ttl){
         _setTtl(fd, ttl);
     }
+    
+    public static void main(String[] args) {
+        String target = "172.217.21.35"; // google.de
+        
+        JtDatagramSocket jtDatagramSocket = new JtDatagramSocket();
+        JtDatagramPacket jtDatagramPacket = new JtDatagramPacket(new byte[0], "", 0, target, 55555);
+        
+        jtDatagramSocket.open();
+        jtDatagramSocket.setTtl(2);
+        jtDatagramSocket.sendto(jtDatagramPacket);
+        
+    }
+  
 }
