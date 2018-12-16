@@ -20,6 +20,7 @@ JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1sendto
 
   const char *destHostStr = env->GetStringUTFChars(destHost, NULL);
 
+  sa_dest.sin_family = AF_INET;
   inet_pton(AF_INET,destHostStr, &sa_dest.sin_addr);
   sa_dest.sin_port = destPort;
 
