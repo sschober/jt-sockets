@@ -25,3 +25,8 @@ JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1sendto
 
   SendTo(fd, &bytes, bytesLen, 0, reinterpret_cast<struct sockaddr*>(&sa_dest), sa_dest_len);
 }
+
+JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1setTtl
+(JNIEnv *, jobject, jint fd, jint ttl){
+  SetSockOpt(fd, IPPROTO_IP, IP_TTL, &ttl, sizeof (int));
+}
