@@ -4,7 +4,7 @@ int Socket(int family, int type, int protocol){
   int n;
 
   if((n=socket(family,type,protocol))<0){
-    std::cerr << "socket error: " << strerror(errno) << std::endl;
+    std::cerr << "socket error: Socket: " << strerror(errno) << std::endl;
     exit(1);
   }
 
@@ -38,7 +38,7 @@ ssize_t	SendTo(int fd, const void *bytes, size_t bytes_len,
 
   ssize_t n;
   if((n=sendto(fd, bytes, bytes_len, 0, sa_dest, sa_dest_len))<0){
-    std::cerr << "socket error: " << strerror(errno) << std::endl;
+    std::cerr << "socket error: SendTo: " << strerror(errno) << std::endl;
   }
 
   return n;
@@ -48,7 +48,7 @@ int	SetSockOpt(int fd, int level, int optname, const void *opt, socklen_t optlen
 
   int n;
   if( ( n = setsockopt(fd, level, optname, opt, optlen ))){
-    std::cerr << "socket error: " << strerror(errno) << std::endl;
+    std::cerr << "socket error: SetSockOpt: " << strerror(errno) << std::endl;
   }
 
   return n;
