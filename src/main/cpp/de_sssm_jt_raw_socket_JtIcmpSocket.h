@@ -23,6 +23,14 @@ JNIEXPORT jint JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1open
 JNIEXPORT jobject JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1recvfrom
   (JNIEnv *, jobject, jint);
 
+/*
+ * Class:     de_sssm_jt_raw_socket_JtIcmpSocket
+ * Method:    _setTimeOut
+ * Signature: (III)V
+ */
+JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1setTimeOut
+  (JNIEnv *, jobject, jint, jint, jint);
+
 #ifdef __cplusplus
 }
 #endif

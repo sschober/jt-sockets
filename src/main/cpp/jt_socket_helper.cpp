@@ -25,9 +25,14 @@ int Close(int fd){
 ssize_t ReceiveFrom(int fd, void* msg, size_t msgLen, int, struct sockaddr *sa_from, socklen_t *sa_from_len){
   ssize_t n;
 
-  if( (n= recvfrom(fd, msg, msgLen, 0, sa_from, sa_from_len)) < 0){
-    std::cerr << "socket error: " << strerror(errno) << std::endl;
-    exit(1);
+  if( (n = recvfrom(fd, msg, msgLen, 0, sa_from, sa_from_len)) < 0){
+    if(EWOULDBLOCK == errno){
+      std::cerr << "time out on socket: " << fd << std::endl;
+    }
+    else{
+      std::cerr << "socket error: ReceiveFrom: " << strerror(errno) << std::endl;
+      exit(1);
+    }
   }
 
   return n;

@@ -10,11 +10,11 @@ package de.sssm.jt.raw.socket;
  * @author sven
  */
 public class JtDatagramPacket {
-    final byte[] bytes;
-    final String sourceAddress;
-    final int sourcePort;
-    final String destAddress;
-    final int destPort;
+    public final byte[] bytes;
+    public final String sourceAddress;
+    public final int sourcePort;
+    public final String destAddress;
+    public final int destPort;
 
     public JtDatagramPacket(byte[] bytes, String sourceAddress, int sourcePort, String destAddress, int destPort) {
         this.bytes = bytes;

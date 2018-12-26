@@ -9,9 +9,9 @@ package de.sssm.jt.raw.socket;
  *
  * @author sven
  */
-public class SocketNotOpenException extends Exception {
+public class JtSocketNotOpenException extends Exception {
 
-    public SocketNotOpenException() {
+    public JtSocketNotOpenException() {
     }
     
 }

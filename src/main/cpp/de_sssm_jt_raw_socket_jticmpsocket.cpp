@@ -4,7 +4,7 @@
 #include "de_sssm_jt_raw_socket_JtIcmpSocket.h"
 
 #define JT_DATAGRAM_PACKET "de/sssm/jt/raw/socket/JtDatagramPacket"
-
+#define JT_RECEIVE_TIMEOUT_EXCEPTION "de/sssm/jt/raw/socket/JtReceiveTimeoutException"
 #define ICMP 1
 
 JNIEXPORT jint JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1open
@@ -26,11 +26,25 @@ JNIEXPORT jobject JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1recvfrom
 
   ssize_t n = ReceiveFrom(fd, &msg, sizeof(msg), 0, reinterpret_cast<struct sockaddr *> (&sa_from), &len);
 
+  jobject result = NULL;
+
+  if( 0 > n && EWOULDBLOCK == errno ){
+    // time out occured
+    jclass exception = env->FindClass(JT_RECEIVE_TIMEOUT_EXCEPTION);
+    if(NULL == exception){
+      std::cerr << "could not find exception: " << JT_RECEIVE_TIMEOUT_EXCEPTION << std::endl;
+      exit(1);
+    }
+    else{
+      std::cout << "throwing exception: " << JT_RECEIVE_TIMEOUT_EXCEPTION << std::endl;
+    }
+    env->ThrowNew(exception, "receive timeout occured");
+    return result;
+  }
+
   // copy bytes from native array to java based array
   jbyteArray bytes = env->NewByteArray( static_cast<int>(n));
   env->SetByteArrayRegion(bytes,0,static_cast<int>(n),msg);
-
-  jobject result = NULL;
 
   // turn from host to java string
   jstring sourceHost = env->NewStringUTF("unknown");
@@ -62,4 +76,12 @@ JNIEXPORT jobject JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1recvfrom
   result = env->NewObject(cls, constructor, bytes, sourceHost, sourcePort, destHost, destPort);
 
   return result;
+}
+
+JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1setTimeOut
+(JNIEnv *, jobject, jint fd, jint seconds, jint microSeconds){
+  struct timeval time_out;
+  time_out.tv_sec = seconds;
+  time_out.tv_usec = microSeconds;
+  SetSockOpt(fd, SOL_SOCKET, SO_RCVTIMEO, &time_out, sizeof (time_out));
 }

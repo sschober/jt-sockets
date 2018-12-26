@@ -12,9 +12,13 @@ package de.sssm.jt.raw.socket;
 public class JtIcmpSocket extends JtAbstractSocket{
 
     protected native int _open();
-    protected native JtDatagramPacket _recvfrom(int fd);
-      
-    public static void main(String[] args) throws SocketNotOpenException {
+    protected native JtDatagramPacket _recvfrom(int fd) throws JtReceiveTimeoutException;
+    protected native void _setTimeOut(int fd, int seconds, int microSeconds);
+    public void setTimeOut(int seconds, int microSeconds){
+        _setTimeOut(fd, seconds, microSeconds);
+    }
+    
+    public static void main(String[] args) throws JtSocketNotOpenException, JtReceiveTimeoutException {
         JtIcmpSocket jtRawSocket = new JtIcmpSocket();
         
         jtRawSocket.sayHello();

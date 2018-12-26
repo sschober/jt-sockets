@@ -21,7 +21,7 @@ public abstract class JtAbstractSocket {
     private native void _close(int fd);    
     
     protected abstract int _open();
-    protected abstract JtDatagramPacket _recvfrom(int fd);
+    protected abstract JtDatagramPacket _recvfrom(int fd) throws JtReceiveTimeoutException;
     
     public void sayHello(){
         _sayHello();
@@ -31,16 +31,16 @@ public abstract class JtAbstractSocket {
         fd = _open();
     }
 
-    public void close() throws SocketNotOpenException{
+    public void close() throws JtSocketNotOpenException{
         if(fd>0){
             _close(fd);
         }
         else{
-            throw new SocketNotOpenException();
+            throw new JtSocketNotOpenException();
         }
     }
 
-    public JtDatagramPacket recvfrom(){
+    public JtDatagramPacket recvfrom() throws JtReceiveTimeoutException{
         return _recvfrom(fd);
     }
 }
