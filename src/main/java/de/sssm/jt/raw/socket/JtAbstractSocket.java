@@ -5,6 +5,7 @@
  */
 package de.sssm.jt.raw.socket;
 
+import de.sssm.jt.NarSystem;
 /**
  *
  * @author sven
@@ -14,7 +15,8 @@ public abstract class JtAbstractSocket {
     protected int fd = -1;
     
     static {
-        System.loadLibrary("native");
+        // TODO: NetBeans does not see this class
+        NarSystem.loadLibrary();
     }
 
     private native void _sayHello();

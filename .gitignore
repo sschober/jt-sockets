@@ -5,3 +5,9 @@ hs_err_pid3915.log
 hs_err_pid3944.log
 hs_err_pid4000.log
 hs_err_pid4030.log
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.jdt.apt.core.prefs
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.m2e.core.prefs
+.classpath
+src/main/cpp/de_sssm_jt_NarSystem.h

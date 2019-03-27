@@ -11,6 +11,8 @@ package de.sssm.jt.protocol;
  */
 public class NoPacketException extends Exception{
 
+    private static final long serialVersionUID = 1L;
+
     NoPacketException(String string) {
         super(string);
     }

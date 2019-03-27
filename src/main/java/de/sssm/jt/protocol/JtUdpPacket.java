@@ -5,7 +5,6 @@
  */
 package de.sssm.jt.protocol;
 
-import java.math.BigInteger;
 import java.util.Arrays;
 
 /**

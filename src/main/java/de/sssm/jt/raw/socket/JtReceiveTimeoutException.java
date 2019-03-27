@@ -10,7 +10,9 @@ package de.sssm.jt.raw.socket;
  * @author sven
  */
 public class JtReceiveTimeoutException extends Exception {
-    public JtReceiveTimeoutException(String message){
+    private static final long serialVersionUID = 1L;
+
+    public JtReceiveTimeoutException(String message) {
         super(message);
     }
 }

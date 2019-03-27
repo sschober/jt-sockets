@@ -11,6 +11,8 @@ package de.sssm.jt.raw.socket;
  */
 public class JtSocketNotOpenException extends Exception {
 
+    private static final long serialVersionUID = 1L;
+
     public JtSocketNotOpenException() {
     }
     
