@@ -6,7 +6,6 @@
 package de.sssm.jt.raw.socket;
 
 /**
- * TODO: rename to JtIcmpSocket
  * @author Sven Schober <sschober@sssm.de>
  */
 public class JtIcmpSocket extends JtAbstractSocket{

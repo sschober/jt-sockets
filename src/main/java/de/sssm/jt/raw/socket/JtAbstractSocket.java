@@ -15,7 +15,6 @@ public abstract class JtAbstractSocket {
     protected int fd = -1;
     
     static {
-        // TODO: NetBeans does not see this class
         NarSystem.loadLibrary();
     }
 

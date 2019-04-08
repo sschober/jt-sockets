@@ -29,7 +29,7 @@ JNIEXPORT jobject JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1recvfrom
   jobject result = NULL;
 
   if( 0 > n && EWOULDBLOCK == errno ){
-    // time out occured
+    // time-out occured
     jclass exception = env->FindClass(JT_RECEIVE_TIMEOUT_EXCEPTION);
     if(NULL == exception){
       std::cerr << "could not find exception: " << JT_RECEIVE_TIMEOUT_EXCEPTION << std::endl;
@@ -38,7 +38,7 @@ JNIEXPORT jobject JNICALL Java_de_sssm_jt_raw_socket_JtIcmpSocket__1recvfrom
     else{
       std::cout << "throwing exception: " << JT_RECEIVE_TIMEOUT_EXCEPTION << std::endl;
     }
-    env->ThrowNew(exception, "receive timeout occured");
+    env->ThrowNew(exception, "receive timeout occurred");
     return result;
   }
 
