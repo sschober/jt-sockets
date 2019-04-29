@@ -1,5 +1,9 @@
 #include "jt_socket_helper.h"
 
+/*
+ * winsock2 takes char * arguments, where standard posix takes void *.
+ * So we define a cast on windows, and nothing on other platforms.
+ */
 #ifdef __MINGW64__
 #define MW64_TO_CHAR_P (char *)
 #else

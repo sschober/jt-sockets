@@ -15,6 +15,17 @@
 #include <ws2tcpip.h>
 #endif
 
+/**
+ * Currently, all these functions try the underlying sockets API function,
+ * log an error in case of failure and exit.
+ *
+ * TODO: rewrite error handling to throw java exceptions.
+ */
+
+/**
+ * Creates a socket of given family, type and protocol.
+ * Returns a handle to the socket on success, logs error and exits otherwise.
+ */
 int Socket(int family, int type, int protocol);
 
 int Close(int fd);
