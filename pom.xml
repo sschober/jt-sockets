@@ -61,4 +61,40 @@
             </plugin>            
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>windows-mingw64</id>
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.maven-nar</groupId>
+                        <artifactId>nar-maven-plugin</artifactId>
+                        <version>3.6.0</version>
+                        <configuration>
+                            <cpp>
+                                <systemIncludePaths>C:\\Program Files\\Java\\jdk-12.0.1\\include,C:\\Program Files\\Java\\jdk-12.0.1\\include\\win32</systemIncludePaths>
+                            </cpp>
+                            <linker>
+                                <name>g++</name>
+                                <options>
+                                    <option>-v</option>
+                                    <option>-Wl,--kill-at</option>
+                                </options>
+                                <sysLibs>
+                                    <sysLib>
+                                        <name>ws2_32</name>
+                                    </sysLib>
+                                </sysLibs>
+                            </linker>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
