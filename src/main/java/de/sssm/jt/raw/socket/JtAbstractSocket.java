@@ -16,18 +16,15 @@ public abstract class JtAbstractSocket {
     
     static {
         NarSystem.loadLibrary();
+        // on windows we need to init the winsock library
+        _init();
     }
 
-    private native void _sayHello();
     private native void _close(int fd);    
-    
     protected abstract int _open();
     protected abstract JtDatagramPacket _recvfrom(int fd) throws JtReceiveTimeoutException;
-    
-    public void sayHello(){
-        _sayHello();
-    }
-    
+    protected native static void _init();
+
     public void open(){
         fd = _open();
     }
@@ -41,7 +38,18 @@ public abstract class JtAbstractSocket {
         }
     }
 
+    private native void _bind(int fd, String localAddress, int port);
+    public void bind(String localAddress, int port){
+        _bind(fd, localAddress, port);
+    }
+
     public JtDatagramPacket recvfrom() throws JtReceiveTimeoutException{
         return _recvfrom(fd);
     }
+
+    protected native void _setTtl(int fd, int ttl);
+    public void setTtl(int ttl){
+        _setTtl(fd, ttl);
+    }
+    
 }

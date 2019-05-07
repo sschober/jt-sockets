@@ -78,11 +78,13 @@
                         <configuration>
                             <cpp>
                                 <systemIncludePaths>C:\\Program Files\\Java\\jdk-12.0.1\\include,C:\\Program Files\\Java\\jdk-12.0.1\\include\\win32</systemIncludePaths>
+                                <options>
+                                    <option>-D_WIN32_WINNT=_WIN32_WINNT_WIN10</option>
+                                </options>
                             </cpp>
                             <linker>
                                 <name>g++</name>
                                 <options>
-                                    <option>-v</option>
                                     <option>-Wl,--kill-at</option>
                                 </options>
                                 <sysLibs>

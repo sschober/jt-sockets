@@ -16,14 +16,16 @@ public class JtIcmpSocket extends JtAbstractSocket{
     public void setTimeOut(int seconds, int microSeconds){
         _setTimeOut(fd, seconds, microSeconds);
     }
-    
+    protected native void _ping(int fd, String destAddress);
+    public void ping(String destAddress){
+        _ping(fd, destAddress);
+    }
     public static void main(String[] args) throws JtSocketNotOpenException, JtReceiveTimeoutException {
         JtIcmpSocket jtRawSocket = new JtIcmpSocket();
         
-        jtRawSocket.sayHello();
         jtRawSocket.open();
         
-// do stuff
+        // do stuff
         JtDatagramPacket result = jtRawSocket.recvfrom();
         
         System.out.println("received: " + result.bytes.length + " bytes from: " + result.sourceAddress + ":" + result.sourcePort);

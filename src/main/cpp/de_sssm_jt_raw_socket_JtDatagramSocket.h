@@ -31,14 +31,6 @@ JNIEXPORT jobject JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1recvfrom
 JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1sendto
   (JNIEnv *, jobject, jint, jstring, jint, jbyteArray);
 
-/*
- * Class:     de_sssm_jt_raw_socket_JtDatagramSocket
- * Method:    _setTtl
- * Signature: (II)V
- */
-JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1setTtl
-  (JNIEnv *, jobject, jint, jint);
-
 #ifdef __cplusplus
 }
 #endif

@@ -9,19 +9,35 @@ extern "C" {
 #endif
 /*
  * Class:     de_sssm_jt_raw_socket_JtAbstractSocket
- * Method:    _sayHello
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtAbstractSocket__1sayHello
-  (JNIEnv *, jobject);
-
-/*
- * Class:     de_sssm_jt_raw_socket_JtAbstractSocket
  * Method:    _close
  * Signature: (I)V
  */
 JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtAbstractSocket__1close
   (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     de_sssm_jt_raw_socket_JtAbstractSocket
+ * Method:    _init
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtAbstractSocket__1init
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     de_sssm_jt_raw_socket_JtAbstractSocket
+ * Method:    _bind
+ * Signature: (ILjava/lang/String;I)V
+ */
+JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtAbstractSocket__1bind
+  (JNIEnv *, jobject, jint, jstring, jint);
+
+/*
+ * Class:     de_sssm_jt_raw_socket_JtAbstractSocket
+ * Method:    _setTtl
+ * Signature: (II)V
+ */
+JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtAbstractSocket__1setTtl
+  (JNIEnv *, jobject, jint, jint);
 
 #ifdef __cplusplus
 }

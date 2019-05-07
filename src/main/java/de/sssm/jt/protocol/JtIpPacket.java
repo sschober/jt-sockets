@@ -14,6 +14,9 @@ import java.util.Arrays;
 public class JtIpPacket {
     int version;
     int headerLength;
+    byte typeOfService;
+    byte timeToLive;
+    byte protocol;
     byte[] payload;
 
     public static JtIpPacket fromBytes(byte[] bytes) throws NoPacketException{
@@ -23,9 +26,15 @@ public class JtIpPacket {
             // the version is the higher part of the byte (should be lower) and
             // the headerLength are the lower (should be higher).
             result.version = (bytes[0] & 0xf0) >> 4;
-            //System.err.println("version: " + result.version);
+            System.err.print("version: " + result.version);
             result.headerLength = (bytes[0] & 0xf) * 4;
-            //System.err.println("header length: " + result.headerLength);
+            System.err.print(", header length: " + result.headerLength);
+            result.typeOfService = bytes[1];
+            System.err.print(", type of service: " + result.typeOfService);
+            result.timeToLive = bytes[8];
+            System.err.print(", time to live: " + result.timeToLive);
+            result.protocol = bytes[9];
+            System.err.println(", protocol: " + result.protocol);
             if(result.headerLength < bytes.length){
                 result.payload = Arrays.copyOfRange(bytes, result.headerLength, bytes.length-1);
             }
@@ -44,4 +53,7 @@ public class JtIpPacket {
         return payload;
     }
 
+    public byte getProtocol(){
+        return protocol;
+    }
 }

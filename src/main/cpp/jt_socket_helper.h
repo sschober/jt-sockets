@@ -9,8 +9,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #elif __MINGW64__
-// TODO this only compiles on windows 10
-#define _WIN32_WINNT _WIN32_WINNT_WIN10
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #endif

@@ -5,6 +5,7 @@
 
 JNIEXPORT jint JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1open
   (JNIEnv *, jobject){
+
   int recvfd = Socket(PF_INET,SOCK_DGRAM,0);
 
   std::cerr << "opened datagram socket: " << recvfd << std::endl;
@@ -43,11 +44,5 @@ JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1sendto
     return;
   }
   sa_dest.sin_port = destPort;
-
   SendTo(fd, &bytes, bytesLen, 0, reinterpret_cast<struct sockaddr*>(&sa_dest), sa_dest_len);
-}
-
-JNIEXPORT void JNICALL Java_de_sssm_jt_raw_socket_JtDatagramSocket__1setTtl
-(JNIEnv *, jobject, jint fd, jint ttl){
-  SetSockOpt(fd, IPPROTO_IP, IP_TTL, &ttl, sizeof (int));
 }

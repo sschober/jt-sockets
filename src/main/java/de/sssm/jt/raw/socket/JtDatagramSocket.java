@@ -21,11 +21,6 @@ public class JtDatagramSocket extends JtAbstractSocket {
         _sendto(fd, p.destAddress, p.destPort, p.bytes);
     }
     
-    protected native void _setTtl(int fd, int ttl);
-    public void setTtl(int ttl){
-        _setTtl(fd, ttl);
-    }
-    
     public static void main(String[] args) throws JtIllegalAddressException, UnknownHostException {
         String target = "172.217.21.35"; // google.de
         

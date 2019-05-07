@@ -28,9 +28,9 @@ public class JtIcmpPacket {
             throw new NoPacketException("not enough header bytes: " + bytes.length);
         }
         result.type = bytes[0];
-        //System.err.println("icmp type: " + result.type);
+        System.err.println("icmp type: " + result.type);
         result.code = bytes[1];
-        //System.err.println("icmp code: " + result.code);
+        System.err.println("icmp code: " + result.code);
         //System.err.println("remaining bytes: " + (bytes.length - ICMP_HEADER_SIZE));
         result.payload = Arrays.copyOfRange(bytes, ICMP_HEADER_SIZE, bytes.length);
         return result;
